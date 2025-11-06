@@ -64,17 +64,10 @@
                 height: 400px;
             }
         }
-        /* Додамо стиль для кращого відображення фото */
-        #gallery-image {
-            aspect-ratio: 4 / 3; /* Зберігаємо співвідношення сторін для фото */
-        }
-        @media (min-width: 768px) {
-            #gallery-image {
-                aspect-ratio: auto; /* Повертаємо до гнучкого на великих екранах */
-            }
-            .aspect-w-4.aspect-h-3 {
-                aspect-ratio: 4 / 3;
-            }
+        /* ОНОВЛЕНО: Робимо рамку квадратною (1:1) для квадратних фото */
+        .image-container {
+            aspect-ratio: 1 / 1;
+            max-height: 768px; /* Обмежимо максимальну висоту */
         }
         
     </style>
@@ -161,11 +154,12 @@
                     <button id="gallery-btn-evening" class="gallery-button" onclick="showImage('evening')">Вечірній</button>
                     <button id="gallery-btn-sport" class="gallery-button" onclick="showImage('sport')">Спортзал</button>
                 </div>
-                <div class="w-full max-w-2xl mx-auto bg-gray-100 rounded-lg overflow-hidden aspect-w-4 aspect-h-3">
+                <!-- ОНОВЛЕНО: 'aspect-w-4 aspect-h-3' замінено на 'image-container' для співвідношення 1:1 -->
+                <div class="w-full max-w-2xl mx-auto bg-gray-100 rounded-lg overflow-hidden image-container">
                     <!-- Оновлений src та alt для початкового зображення -->
                     <img id="gallery-image" src="images/oficial.png" 
                          alt="Офіційний Стиль: Жінка в елегантному бежевому костюмі з планшетом." 
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-contain"> <!-- object-contain залишається, щоб гарантовано показати все фото -->
                 </div>
                 <!-- Оновлений початковий підпис -->
                 <p id="gallery-caption" class="text-center text-gray-600 mt-3 italic">Офіційний Стиль: Жінка в елегантному бежевому костюмі з планшетом.</p>
